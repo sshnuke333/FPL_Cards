@@ -1,0 +1,14 @@
+.DS_*
+*.log*
+logs
+**/*.backup.*
+**/*.back.*
+npm-debug.log*
+
+dist/
+node_modules/
+package-lock.json
+.vscode
+.env
+.npm/
+*.tgz

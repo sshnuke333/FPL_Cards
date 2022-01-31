@@ -1,2 +1,5 @@
 # FPL_Cards
-A Card game based on Fantsay Premier League
+
+A card game based on popular Fantasy Premier League. User has to choose a deck
+of 5 , 7, 9 or 11 cards and will be assigned players at random. User then will
+play against computer taking turns until the user wins/losses all the cards.
