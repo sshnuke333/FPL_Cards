@@ -3,6 +3,7 @@ import {
     StyledBanner,
     Navbar,
     Logo,
+    Menu,
     NavList,
     NavItem,
     Link,
@@ -15,6 +16,7 @@ export const Header = () => {
                 <Link href="#" aria-label="FPL Cards Home Page on logo link">
                     <Logo alt="FPL Cards logo" />
                 </Link>
+                <Menu aria-expanded="false">Menu</Menu>
                 <NavList role="menu">
                     <NavItem>
                         <Link href="#">Home</Link>
