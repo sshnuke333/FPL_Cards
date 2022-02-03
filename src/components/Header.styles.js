@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const StyledBanner = styled.header`
     border-bottom: 1px solid #e2e8f0;
@@ -60,7 +61,7 @@ export const NavItem = styled.li`
     }
 `;
 
-export const Link = styled.a`
+export const StyledLink = styled(Link)`
     font-size: 1.5rem;
     font-weight: 400;
     color: white;

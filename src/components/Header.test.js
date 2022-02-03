@@ -1,11 +1,16 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Header } from './header';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Header } from './Header';
 
 describe('Header component renders', () => {
     beforeEach(() => {
-        render(<Header />);
+        render(
+            <Router>
+                <Header />
+            </Router>
+        );
     });
 
     it('a header element', () => {
@@ -54,7 +59,11 @@ describe('Header component renders', () => {
 describe('Menu button', () => {
     let button, list;
     beforeEach(() => {
-        render(<Header />);
+        render(
+            <Router>
+                <Header />
+            </Router>
+        );
     });
     it('is collapsed on render', () => {
         button = screen.getByText(/Menu/i);
