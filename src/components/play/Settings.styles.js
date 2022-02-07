@@ -4,8 +4,6 @@ import { GearIcon } from '@primer/octicons-react';
 export const Div = styled.div`
     width: 20rem;
     height: 10rem;
-    position: absolute;
-    left: 5rem;
     text-align: end;
 `;
 
