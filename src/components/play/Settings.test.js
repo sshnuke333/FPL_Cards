@@ -7,7 +7,17 @@ describe('Settings component renders', () => {
     beforeEach(() => {
         render(<Settings />);
     });
-    it('a button', () => {
+    it('a start button', () => {
+        expect(
+            screen.getByRole('button', { name: /start/i })
+        ).toBeInTheDocument();
+    });
+    it('a reset button', () => {
+        expect(
+            screen.getByRole('button', { name: /reset/i })
+        ).toBeInTheDocument();
+    });
+    it('a settings button', () => {
         expect(
             screen.getByRole('button', { name: /settings/i })
         ).toBeInTheDocument();
@@ -21,7 +31,8 @@ describe('Settings component renders', () => {
         expect(within(form).getByLabelText(/slider/i)).toBeInTheDocument();
     });
 });
-describe('button', () => {
+
+describe('settings button', () => {
     beforeEach(() => {
         render(<Settings />);
     });

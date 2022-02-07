@@ -1,5 +1,5 @@
 import React from 'react';
-import { Div, Button, Form, Gear } from './Settings.styles';
+import { Button, PlaySVG, ResetSVG, Gear, Div, Form } from './Settings.styles';
 
 const displayForm = (e) => {
     let attribute = 'aria-expanded';
@@ -20,12 +20,18 @@ const updateDisplay = (e) => {
 export const Settings = () => {
     return (
         <Div data-testid="settings">
+            <Button aria-label="start">
+                <PlaySVG />
+            </Button>
+            <Button aria-label="reset">
+                <ResetSVG />
+            </Button>
             <Button
                 aria-label="settings"
                 aria-expanded="false"
                 onClick={displayForm}
             >
-                <Gear size={24} style={{ PointerEvent: 'none' }} />
+                <Gear />
             </Button>
             <Form aria-label="options" id="settings">
                 <legend style={{ paddingBottom: '0.5rem' }}>
