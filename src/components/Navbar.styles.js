@@ -8,7 +8,7 @@ export const StyledBanner = styled.header`
     height: 4.5rem;
 `;
 
-export const Navbar = styled.nav`
+export const StyledNav = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;

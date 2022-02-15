@@ -1,11 +1,21 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
 import { Settings } from './Settings';
+
+import { rootReducer } from '../store/rootReducer';
+
+const store = configureStore({ reducer: rootReducer });
 
 describe('Settings component renders', () => {
     beforeEach(() => {
-        render(<Settings />);
+        render(
+            <Provider store={store}>
+                <Settings />
+            </Provider>
+        );
     });
     it('a start button', () => {
         expect(
@@ -34,7 +44,11 @@ describe('Settings component renders', () => {
 
 describe('settings button', () => {
     beforeEach(() => {
-        render(<Settings />);
+        render(
+            <Provider store={store}>
+                <Settings />
+            </Provider>
+        );
     });
     it('is not expanded', () => {
         expect(

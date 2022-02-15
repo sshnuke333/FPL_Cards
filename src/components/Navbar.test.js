@@ -1,14 +1,15 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Header } from './Header';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-describe('Header component renders', () => {
+import { Navbar } from './Navbar';
+
+describe('Navbar renders', () => {
     beforeEach(() => {
         render(
             <Router>
-                <Header />
+                <Navbar />
             </Router>
         );
     });
@@ -61,7 +62,7 @@ describe('Menu button', () => {
     beforeEach(() => {
         render(
             <Router>
-                <Header />
+                <Navbar />
             </Router>
         );
     });

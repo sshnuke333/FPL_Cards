@@ -2,11 +2,6 @@ import styled from 'styled-components';
 
 import { PlayIcon, IssueReopenedIcon, GearIcon } from '@primer/octicons-react';
 
-// export const Button = styled.button`
-//     margin: 0.5rem 1rem;
-//     font-size: 1.5rem;
-//     background-color: transparent;
-// `;
 const svgProps = `pointer-events: none;
 width: 1.5rem;
 height: 1.5rem;
@@ -31,7 +26,7 @@ export const ResetSVG = styled(IssueReopenedIcon)`
 `;
 
 export const Div = styled.div`
-    width: 20rem;
+    min-width: 15rem;
     height: 10rem;
     text-align: center;
 `;
