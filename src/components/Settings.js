@@ -1,28 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, PlaySVG, ResetSVG, Gear, Div, Form } from './Settings.styles';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { headerSelector } from '../store/Header.slice';
 import {
-    setCards,
     setDeckSize,
     setPlayerCards,
     setOpponentCards,
     setCurrentPlayerCard,
     setCurrentOpponentCard,
+    setPopulated,
     cardsSelector,
 } from '../store/Cards.slice';
 
-const displayForm = (e) => {
-    let attribute = 'aria-expanded';
-    let expanded = e.target.getAttribute(attribute);
-    let form = document.getElementById('settings');
-    expanded === 'false'
-        ? e.target.setAttribute(attribute, 'true')
-        : e.target.setAttribute(attribute, 'false');
-    expanded === 'false'
-        ? (form.style.display = 'block')
-        : (form.style.display = '');
-};
+import { toggleDisplay } from '../helpers/toggleDisplay';
 
 export const Settings = () => {
     const dispatch = useDispatch();
@@ -35,7 +26,6 @@ export const Settings = () => {
         const totalPlayers = Object.keys(fplPlayers).length;
         let i = 0;
         while (i < deckSize) {
-            console.log(totalPlayers);
             let playerKey = Math.floor(Math.random() * totalPlayers);
             let randomPlayer = fplPlayers[playerKey];
             if (
@@ -50,7 +40,6 @@ export const Settings = () => {
 
     const startGame = () => {
         buildDeck();
-        dispatch(setCards());
         players.map((player, index) => {
             if (index === 0) dispatch(setCurrentPlayerCard(player));
             if (index === 1) dispatch(setCurrentOpponentCard(player));
@@ -60,6 +49,7 @@ export const Settings = () => {
                     : dispatch(setOpponentCards(player));
             }
         });
+        dispatch(setPopulated());
         setDisabled(true);
     };
     const updateDisplay = (e) => {
@@ -78,7 +68,7 @@ export const Settings = () => {
             <Button
                 aria-label="settings"
                 aria-expanded="false"
-                onClick={displayForm}
+                onClick={(e) => toggleDisplay(e, 'settings', 'block')}
             >
                 <Gear />
             </Button>

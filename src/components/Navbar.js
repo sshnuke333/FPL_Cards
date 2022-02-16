@@ -9,17 +9,7 @@ import {
     StyledLink,
 } from './Navbar.styles';
 
-const toggleMenu = (e) => {
-    let attribute = 'aria-expanded';
-    let expanded = e.target.getAttribute(attribute);
-    let menuList = document.getElementById('menu-list');
-    expanded === 'false'
-        ? e.target.setAttribute(attribute, 'true')
-        : e.target.setAttribute(attribute, 'false');
-    expanded === 'false'
-        ? (menuList.style.display = 'flex')
-        : (menuList.style.display = 'none');
-};
+import { toggleDisplay } from '../helpers/toggleDisplay';
 
 export const Navbar = () => {
     return (
@@ -34,7 +24,7 @@ export const Navbar = () => {
                 <MenuButton
                     id="menu-button"
                     aria-expanded="false"
-                    onClick={toggleMenu}
+                    onClick={(e) => toggleDisplay(e, 'menu-list', 'flex')}
                 >
                     Menu
                 </MenuButton>
