@@ -11,7 +11,7 @@ import {
 
 export const Card = ({ player }) => {
     return (
-        <CardContent key={player.code}>
+        <CardContent>
             <ImageContent>
                 <PlayerImg
                     src={`https://resources.premierleague.com/premierleague/photos/players/250x250/p${player.code}.png`}

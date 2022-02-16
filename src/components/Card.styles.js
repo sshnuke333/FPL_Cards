@@ -8,14 +8,7 @@ export const CardContent = styled.div`
     box-shadow: 4px 4px 12px 2px rgba(0, 0, 0, 0.6);
     background: linear-gradient(270deg, #963cff, #37003c);
     background-size: contain;
-    margin-left: -10rem;
-    transition: 0.2s;
-    &:hover {
-        transform: translateY(-2rem);
-    }
-    &:first-child {
-        margin-left: 1rem;
-    }
+    margin: 1rem 0.5rem;
 `;
 
 export const ImageContent = styled.div`
