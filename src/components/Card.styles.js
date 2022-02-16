@@ -1,21 +1,21 @@
 import styled from 'styled-components';
 
 export const CardContent = styled.div`
-    width: 18rem;
-    height: 24rem;
+    width: 20rem;
+    height: 32rem;
+    background: linear-gradient(270deg, #01f5ff, #a425ff);
     border: 0.25rem solid black;
     border-radius: 0.5rem;
     box-shadow: 4px 4px 12px 2px rgba(0, 0, 0, 0.6);
-    background: linear-gradient(270deg, #963cff, #37003c);
-    background-size: contain;
     margin: 1rem 0.5rem;
 `;
 
 export const ImageContent = styled.div`
     display: grid;
-    height: 14rem;
-    grid-template-columns: 3rem 1rem 17rem;
-    grid-template-rows: 1rem 3rem repeat(4, 3.5rem);
+    height: 16rem;
+    grid-template-columns: 3rem 1rem 16rem;
+    grid-template-rows: 1rem 3rem repeat(4, 3rem);
+    background-size: cover;
 `;
 
 export const Badge = styled.img`
@@ -28,29 +28,52 @@ export const Badge = styled.img`
 `;
 
 export const PlayerImg = styled.img`
-    width: 13rem;
-    height: 13rem;
+    width: 15rem;
+    height: 15rem;
     grid-column: 3/4;
     grid-row: 2/7;
 `;
 
-export const StatContent = styled.div`
-    height: 10rem;
-    margin-bottom: 2px;
-    background-color: whitesmoke;
-    box-shadow: 0.5px -2px 2px rgba(0, 0, 0, 0.4);
+export const PlayerName = styled.div`
+    width: 18rem;
+    height: 3rem;
+    font-size: 2rem;
+    margin-left: 2rem;
+    background: #3d003f;
+    color: white;
     text-align: center;
-    font-size: 1.5rem;
+    line-height: 1.5;
+`;
+export const StatContent = styled.div`
+    width: 16rem;
+    height: 13rem;
+    margin: 0 2rem 2px 2rem;
+    background: transparent;
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
 `;
 
 export const StatButton = styled.button`
-    width: 9rem;
-    height: 5rem;
+    width: 14rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    text-align: start;
     cursor: pointer;
-    background-color: ${(props) => (props.color ? props.color : 'white')};
+    background-color: transparent;
     &:hover {
         border: 1px solid black;
     }
+`;
+
+export const StatName = styled.span`
+    background: #3d003f;
+    color: white;
+    text-align: center;
+    padding: 0.25rem 1rem;
+`;
+
+export const StatValue = styled(StatName)`
+    background: #01f5ff;
+    color: #3d003f;
 `;
