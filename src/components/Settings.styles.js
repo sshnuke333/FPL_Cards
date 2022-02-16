@@ -29,6 +29,8 @@ export const Div = styled.div`
     min-width: 15rem;
     height: 10rem;
     text-align: center;
+    grid-column: 1/2;
+    grid-row: 1/2;
 `;
 
 export const Gear = styled(GearIcon)`

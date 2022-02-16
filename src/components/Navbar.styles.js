@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const StyledBanner = styled.header`
-    border-bottom: 1px solid #e2e8f0;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-    background-color: #37003c;
-    height: 4.5rem;
+    box-shadow: 0 6px 6px 4px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 6px 9px 3px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(270deg, #963cff, #37003c);
+    height: 5rem;
 `;
 
 export const StyledNav = styled.nav`
