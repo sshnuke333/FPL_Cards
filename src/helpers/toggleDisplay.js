@@ -1,11 +1,15 @@
-export const toggleDisplay = (event, targetId, displayValue) => {
-    const attribute = 'aria-expanded';
-    const expanded = event.target.getAttribute(attribute);
-    const form = document.getElementById(targetId);
-    expanded === 'false'
+export const toggleDisplay = (
+    event,
+    targetId,
+    displayValue,
+    attribute = 'aria-expanded'
+) => {
+    const targetElement = document.getElementById(targetId);
+    const attributeStatus = event.target.getAttribute(attribute);
+    attributeStatus === 'false'
         ? event.target.setAttribute(attribute, 'true')
         : event.target.setAttribute(attribute, 'false');
-    expanded === 'false'
-        ? (form.style.display = displayValue)
-        : (form.style.display = 'none');
+    attributeStatus === 'false'
+        ? (targetElement.style.display = displayValue)
+        : (targetElement.style.display = 'none');
 };
