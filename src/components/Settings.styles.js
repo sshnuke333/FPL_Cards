@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { PlayIcon, IssueReopenedIcon, GearIcon } from '@primer/octicons-react';
 
 const svgProps = `pointer-events: none;
-width: 1.5rem;
-height: 1.5rem;
+width: 2rem;
+height: 2rem;
 margin: 0.25rem;`;
 
 export const Button = styled.button`
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
     background-color: transparent;
     margin: 0.5rem;
     cursor: pointer;
@@ -35,6 +35,7 @@ export const Div = styled.div`
 
 export const Gear = styled(GearIcon)`
     ${svgProps}
+    fill: white;
 `;
 
 export const Form = styled.form`

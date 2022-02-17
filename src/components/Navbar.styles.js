@@ -5,7 +5,7 @@ export const StyledBanner = styled.header`
     box-shadow: 0 6px 6px 4px rgba(0, 0, 0, 0.7);
     box-shadow: 0 6px 9px 3px rgba(0, 0, 0, 0.6);
     background: linear-gradient(270deg, #963cff, #37003c);
-    height: 5rem;
+    height: 4rem;
 `;
 
 export const StyledNav = styled.nav`
@@ -63,9 +63,8 @@ export const NavItem = styled.li`
 
 export const StyledLink = styled(Link)`
     font-size: 1.5rem;
-    font-weight: 400;
     color: white;
     &:hover {
-        color: #482ff7;
+        color: #fe6900;
     }
 `;

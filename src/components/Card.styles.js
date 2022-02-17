@@ -61,8 +61,10 @@ export const StatButton = styled.button`
     text-align: start;
     cursor: pointer;
     background-color: transparent;
+
     &:hover {
-        border: 1px solid black;
+        transform: translateX(3rem);
+        transition: ease-in 200ms;
     }
 `;
 
@@ -70,7 +72,7 @@ export const StatName = styled.span`
     background: #3d003f;
     color: white;
     text-align: center;
-    padding: 0.25rem 1rem;
+    padding: 0.5rem 1rem;
 `;
 
 export const StatValue = styled(StatName)`
