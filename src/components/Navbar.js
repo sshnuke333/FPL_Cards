@@ -36,7 +36,7 @@ export const Navbar = () => {
                         <StyledLink to="play">Play</StyledLink>
                     </NavItem>
                     <NavItem>
-                        <StyledLink to="#">Disclaimer</StyledLink>
+                        <StyledLink to="disclaimer">Disclaimer</StyledLink>
                     </NavItem>
                 </NavList>
             </StyledNav>
