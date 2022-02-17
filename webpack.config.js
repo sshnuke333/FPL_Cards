@@ -34,6 +34,10 @@ module.exports = {
                     cacheDirectory: true,
                 },
             },
+            {
+                test: /\.(woff2|woff|eot|ttf|otf)$/,
+                loader: 'file-loader',
+            },
         ],
     },
     devServer: {
