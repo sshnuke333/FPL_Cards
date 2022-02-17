@@ -37,12 +37,12 @@ export const PlayerImg = styled.img`
 export const PlayerName = styled.div`
     width: 18rem;
     height: 3rem;
-    font-size: 2rem;
     margin-left: 2rem;
     background: #3d003f;
     color: white;
     text-align: center;
-    line-height: 1.5;
+    font-size: ${(props) => (props.smallFont ? '1.5rem' : '2rem')};
+    line-height: ${(props) => (props.smallFont ? '2' : '1.5')};
 `;
 export const StatContent = styled.div`
     width: 16rem;

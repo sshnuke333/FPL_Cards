@@ -42,7 +42,9 @@ export const Card = ({ player }) => {
                     alt="Club badge"
                 />
             </ImageContent>
-            <PlayerName>{player.web_name.toUpperCase()}</PlayerName>
+            <PlayerName smallFont={player.web_name.length > 10}>
+                {player.web_name.toUpperCase()}
+            </PlayerName>
             <StatContent>
                 <StatButton>
                     <StatName>POINTS</StatName>
