@@ -37,8 +37,3 @@ export const Gear = styled(GearIcon)`
     ${svgProps}
     fill: white;
 `;
-
-export const Form = styled.form`
-    display: none;
-    padding: 1rem;
-`;
