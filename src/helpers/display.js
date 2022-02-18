@@ -13,3 +13,8 @@ export const toggleDisplay = (
         ? (targetElement.style.display = displayValue)
         : (targetElement.style.display = 'none');
 };
+
+export const hideDisplay = (targetId) => {
+    const targetElement = document.getElementById(targetId);
+    targetElement.style.display = 'none';
+};
