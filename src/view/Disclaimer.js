@@ -10,7 +10,7 @@ export const Disclaimer = () => {
     return (
         <DisclaimerDiv>
             <Legal>Legal</Legal>
-            <StyledP color="#f72135">
+            <StyledP color="#dad400">
                 This App is not a licensed Premier League product.
             </StyledP>
             <StyledP>
@@ -33,6 +33,16 @@ export const Disclaimer = () => {
                 </ExternalLink>{' '}
                 or it's suppliers but is being used fairly in good faith for
                 non-commercial research study.
+            </StyledP>
+            <StyledP>
+                This app uses{' '}
+                <ExternalLink
+                    href="https://www.fontfabric.com/fonts/uni-sans/"
+                    target="_blank"
+                >
+                    Uni Sans Heavy
+                </ExternalLink>{' '}
+                font, a freeware provided by Svetoslav Simov / fontfabric.{' '}
             </StyledP>
         </DisclaimerDiv>
     );

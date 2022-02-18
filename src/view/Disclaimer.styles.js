@@ -14,11 +14,11 @@ export const DisclaimerDiv = styled.div`
 `;
 
 export const ExternalLink = styled.a`
-    color: #f72135;
+    color: #dad400;
 `;
 
 export const Legal = styled.h2`
-    color: #f72135;
+    color: #dad400;
     font-size: 3rem;
 `;
 
