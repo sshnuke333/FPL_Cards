@@ -6,16 +6,23 @@ import {
     HideBanner,
     Close,
 } from './Banner.styles';
-import { toggleDisplay } from '../helpers/toggleDisplay';
+import { toggleDisplay, hideDisplay } from '../helpers/display';
 
 export const Banner = () => {
     return (
         <StyledDiv id="alert" aria-label="alert">
             <BannerText>
                 This is not a licensed Premier League app please read the
-                complete <StyledLink to="disclaimer">disclaimer</StyledLink>{' '}
+                complete{' '}
+                <StyledLink
+                    to="disclaimer"
+                    onClick={() => hideDisplay('alert')}
+                >
+                    disclaimer
+                </StyledLink>{' '}
             </BannerText>
             <HideBanner
+                aria-label="close"
                 aria-hidden="false"
                 onClick={(e) =>
                     toggleDisplay(e, 'alert', 'none', 'aria-hidden')

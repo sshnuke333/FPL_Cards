@@ -4,20 +4,23 @@ import { XCircleIcon } from '@primer/octicons-react';
 
 const textStyle = `
     font-size: 1.5rem;
-    color: white;
+    color: #3d003f;
+    @media only screen and (max-width: 996px) {
+        font-size: 1.25rem;
+    }
     @media only screen and (max-width: 768px) {
         font-size: 1rem;
     }`;
 
 export const StyledDiv = styled.div`
-    height: 3rem;
+    height: 4rem;
     display: grid;
     place-items: center;
     grid-template-columns: auto 3rem;
     background: linear-gradient(45deg, #fe6900, #dad400);
     font-size: 2rem;
-    @media only screen and (max-width: 768px) {
-        height: 5rem;
+    @media only screen and (max-width: 1200px) {
+        height: 4.5rem;
     }
 `;
 export const BannerText = styled.span`
