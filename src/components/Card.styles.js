@@ -1,6 +1,18 @@
+import React from 'react';
 import styled from 'styled-components';
 
-export const CardContent = styled.div`
+import { renderToStaticMarkup } from 'react-dom/server';
+import { Background } from './Background';
+const svgBackground = encodeURIComponent(
+    renderToStaticMarkup(
+        <Background gradientStart={'#3d003f'} gradientEnd={'#3f003f'} />
+    )
+);
+
+export const CardContent = styled.div.attrs((props) => ({
+    margin: props.margin || '0.5rem',
+    display: props.display || 'block',
+}))`
     width: 20rem;
     height: 32rem;
     background: linear-gradient(270deg, #01f5ff, #a425ff);
@@ -8,6 +20,12 @@ export const CardContent = styled.div`
     border-radius: 0.5rem;
     box-shadow: 4px 4px 12px 2px rgba(0, 0, 0, 0.6);
     margin: 1rem 0.5rem;
+    margin-left: ${(props) => props.margin};
+    z-index: ${(props) => props.zIndex};
+    @media only screen and (max-width: 768px) {
+        margin: 1rem 0.25rem;
+        display: ${(props) => props.display};
+    }
 `;
 
 export const ImageContent = styled.div`
@@ -15,6 +33,7 @@ export const ImageContent = styled.div`
     height: 16rem;
     grid-template-columns: 3rem 1rem 16rem;
     grid-template-rows: 1rem 3rem repeat(4, 3rem);
+    background-image: ${`url("data:image/svg+xml,${svgBackground}"),linear-gradient(270deg, #01f5ff, #a425ff)`};
     background-size: cover;
 `;
 
