@@ -12,22 +12,17 @@ import {
     StatValue,
 } from './Card.styles';
 
-import { renderToStaticMarkup } from 'react-dom/server';
-import { Background } from './Background';
-const svgBackground = encodeURIComponent(
-    renderToStaticMarkup(
-        <Background gradientStart={'#3d003f'} gradientEnd={'#3f003f'} />
-    )
-);
-
-export const Card = ({ player }) => {
+export const Card = ({
+    player,
+    margin,
+    display,
+    zIndex,
+    handleStatClick = (f) => f, // avoid error if no function is passed
+    disabled = true,
+}) => {
     return (
-        <CardContent>
-            <ImageContent
-                style={{
-                    backgroundImage: `url("data:image/svg+xml,${svgBackground}"),linear-gradient(270deg, #01f5ff, #a425ff)`,
-                }}
-            >
+        <CardContent margin={margin} display={display} zIndex={zIndex}>
+            <ImageContent>
                 <PlayerImg
                     src={`https://resources.premierleague.com/premierleague/photos/players/250x250/p${player.code}.png`}
                     alt={`${player.first_name} ${player.second_name}'s image`}
@@ -46,11 +41,11 @@ export const Card = ({ player }) => {
                 {player.web_name.toUpperCase()}
             </PlayerName>
             <StatContent>
-                <StatButton>
+                <StatButton disabled={disabled} onClick={handleStatClick}>
                     <StatName>POINTS</StatName>
                     <StatValue>{player.total_points}</StatValue>
                 </StatButton>
-                <StatButton>
+                <StatButton disabled={disabled} onClick={handleStatClick}>
                     <StatName>PP90</StatName>
                     <StatValue>
                         {(player.total_points / (player.minutes / 90)).toFixed(
@@ -58,11 +53,11 @@ export const Card = ({ player }) => {
                         )}
                     </StatValue>
                 </StatButton>
-                <StatButton>
+                <StatButton disabled={disabled} onClick={handleStatClick}>
                     <StatName>VALUE</StatName>
                     <StatValue>{parseFloat(player.value_season)}</StatValue>
                 </StatButton>
-                <StatButton>
+                <StatButton disabled={disabled} onClick={handleStatClick}>
                     <StatName>ICT RANK</StatName>
                     <StatValue>{player.ict_index_rank_type}</StatValue>
                 </StatButton>
