@@ -38,11 +38,12 @@ export const NavList = styled.ul`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 2000;
     @media only screen and (max-width: 768px) {
         display: none;
         position: fixed;
         left: 0;
-        top: 4.5rem;
+        top: 4rem;
         border-top: 1px solid coral;
         flex-direction: column;
         background-color: #fff;

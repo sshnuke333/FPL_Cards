@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
     StyledBanner,
     StyledNav,
@@ -9,14 +9,14 @@ import {
     StyledLink,
 } from './Navbar.styles';
 
-import { toggleDisplay } from '../helpers/toggleDisplay';
+import { toggleDisplay } from '../helpers/display';
 
 export const Navbar = () => {
     return (
         <StyledBanner>
             <StyledNav>
                 <StyledLink
-                    to="#"
+                    to="/"
                     aria-label="FPL Cards Home Page on logo link"
                 >
                     <Logo alt="FPL Cards logo" />
@@ -30,7 +30,7 @@ export const Navbar = () => {
                 </MenuButton>
                 <NavList id="menu-list" role="menu">
                     <NavItem>
-                        <StyledLink to="#">Home</StyledLink>
+                        <StyledLink to="/">Home</StyledLink>
                     </NavItem>
                     <NavItem>
                         <StyledLink to="play">Play</StyledLink>
