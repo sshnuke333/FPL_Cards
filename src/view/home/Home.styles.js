@@ -22,11 +22,12 @@ export const StyledP = styled.p`
     margin: 0.5rem;
     padding: 0.5rem;
     @media only screen and (min-width: 1200px) {
-        font-size: 10rem;
+        font-size: 8rem;
         margin: 1rem;
         padding: 1rem;
     }
-    @media only screen and (max-width: 796px) {
+    @media only screen and(min-width: 577px) and (max-width: 796px) {
+        text-align: center;
         font-size: 7rem;
         margin: 1rem;
         padding: 1rem;

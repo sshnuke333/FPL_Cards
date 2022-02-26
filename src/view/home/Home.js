@@ -17,12 +17,12 @@ export const Home = () => {
                             <Card
                                 margin="-5rem"
                                 zIndex="1000"
-                                player={fplPlayers[370]}
+                                player={fplPlayers[371]}
                             />
                             <Card
                                 margin="-5rem"
                                 display="none"
-                                player={fplPlayers[403]}
+                                player={fplPlayers[404]}
                             />
                         </>
                     ) : (
