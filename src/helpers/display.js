@@ -1,4 +1,5 @@
-export const toggleDisplay = (
+// toggles aria-expanded value on clicked target and sets display on it's control
+export const expandTarget = (
     event,
     targetId,
     displayValue,
@@ -13,8 +14,15 @@ export const toggleDisplay = (
         ? (targetElement.style.display = displayValue)
         : (targetElement.style.display = 'none');
 };
-
+// hides the element given it's id
 export const hideDisplay = (targetId) => {
     const targetElement = document.getElementById(targetId);
     targetElement.style.display = 'none';
+};
+// toggles display of element given it's id
+export const toggleDisplay = (targetId, displayValue) => {
+    const targetElement = document.getElementById(targetId);
+    targetElement.style.display === 'none'
+        ? (targetElement.style.display = displayValue)
+        : (targetElement.style.display = 'none');
 };

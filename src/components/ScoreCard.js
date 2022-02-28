@@ -8,7 +8,7 @@ import {
 
 export const ScoreCard = ({ playerLeft, opponentLeft }) => {
     return (
-        <ScoreCardDiv>
+        <ScoreCardDiv data-testid="scorecard">
             <ScoreCardDetails>Cards Left</ScoreCardDetails>
             <ScoreCardLabel column="1/2">YOU</ScoreCardLabel>
             <ScoreDiv>

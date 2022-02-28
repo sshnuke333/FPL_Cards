@@ -235,7 +235,7 @@ export const Play = () => {
                             <Card
                                 player={currentOpponentCard}
                                 animate={animate}
-                                transform={true}
+                                flip={true}
                             />
                         </div>
                     </CurrentCards>

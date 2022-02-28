@@ -9,7 +9,7 @@ import {
     StyledLink,
 } from './Navbar.styles';
 
-import { toggleDisplay } from '../helpers/display';
+import { expandTarget } from '../helpers/display';
 
 export const Navbar = () => {
     return (
@@ -24,7 +24,8 @@ export const Navbar = () => {
                 <MenuButton
                     id="menu-button"
                     aria-expanded="false"
-                    onClick={(e) => toggleDisplay(e, 'menu-list', 'flex')}
+                    aria-controls="menu-list"
+                    onClick={(e) => expandTarget(e, 'menu-list', 'flex')}
                 >
                     Menu
                 </MenuButton>
