@@ -7,6 +7,9 @@ export const InputControl = styled.div`
 `;
 
 export const Input = styled.input`
+    display: block;
+    padding: 0.5rem 0;
+    cursor: pointer;
     &:focus {
         outline: none;
     }

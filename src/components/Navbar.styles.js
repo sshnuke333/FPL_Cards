@@ -41,7 +41,7 @@ export const NavList = styled.ul`
     z-index: 2000;
     @media only screen and (max-width: 768px) {
         display: none;
-        position: fixed;
+        position: absolute;
         left: 0;
         top: 4rem;
         border-top: 1px solid coral;

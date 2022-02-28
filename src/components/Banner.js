@@ -6,7 +6,7 @@ import {
     HideBanner,
     Close,
 } from './Banner.styles';
-import { toggleDisplay, hideDisplay } from '../helpers/display';
+import { expandTarget, hideDisplay } from '../helpers/display';
 
 export const Banner = () => {
     return (
@@ -24,9 +24,7 @@ export const Banner = () => {
             <HideBanner
                 aria-label="close"
                 aria-hidden="false"
-                onClick={(e) =>
-                    toggleDisplay(e, 'alert', 'none', 'aria-hidden')
-                }
+                onClick={(e) => expandTarget(e, 'alert', 'none', 'aria-hidden')}
             >
                 <Close verticalAlign="0" />
             </HideBanner>

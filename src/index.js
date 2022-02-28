@@ -11,13 +11,13 @@ import { rootReducer } from './store/rootReducer';
 const store = configureStore({ reducer: rootReducer });
 
 render(
-    <>
+    <React.StrictMode>
         <GlobalStyle />
         <Provider store={store}>
             <Router>
                 <App />
             </Router>
         </Provider>
-    </>,
+    </React.StrictMode>,
     document.getElementById('root')
 );
