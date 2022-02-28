@@ -43,11 +43,11 @@ export const CardContent = styled.div.attrs((props) => ({
     transform: ${(props) => (props.flip ? 'rotateY(180deg)' : 'none')};
     transform-style: preserve-3d;
     z-index: ${(props) => props.zIndex};
-    ${(props) => (props.animate ? animate : 'animation: none')}
     @media only screen and (max-width: 796px) {
         margin: 1rem 0.25rem;
         display: ${(props) => props.display};
     }
+    ${(props) => (props.animate ? animate : 'animation: none')}
 `;
 
 export const ImageContent = styled.div`

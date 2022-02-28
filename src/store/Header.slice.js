@@ -40,7 +40,7 @@ export function fetchFPLData() {
         dispatch(getFPLPlayers());
         try {
             const response = await axios.get(
-                'https://fantasy.premierleague.com/api/bootstrap-static/'
+                'https://api-cors-anywhere-sshnuke.herokuapp.com/https://fantasy.premierleague.com/api/bootstrap-static/'
             );
             dispatch(getFPLPlayersSuccess(response.data));
         } catch (error) {
