@@ -28,7 +28,7 @@ export const Card = ({
             display={display}
             zIndex={zIndex}
             animate={animate}
-            flip={transform}
+            flip={flip}
         >
             <ImageContent>
                 <PlayerImg
