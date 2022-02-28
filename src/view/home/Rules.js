@@ -19,11 +19,11 @@ export const Rules = ({ player }) => {
         switch (e.target.innerText) {
             case 'POINTS':
                 setDescription('Total FPL Points scored Till now :');
-                setRule('Higher value wins');
+                setRule('Higher points wins');
                 break;
             case 'PP90':
                 setDescription('Total Points Per 90 minutes :');
-                setRule('Higher value wins');
+                setRule('Higher PP90 wins');
                 break;
             case 'VALUE':
                 setDescription('Total FPL Points / player cost :');
@@ -31,7 +31,7 @@ export const Rules = ({ player }) => {
                 break;
             case 'ICT RANK':
                 setDescription("FPL's ICT index Rank based on player type :");
-                setRule('Lower value wins');
+                setRule('Lower rank wins');
                 break;
         }
     };

@@ -17,7 +17,7 @@ export const Home = () => {
                             <Card
                                 margin="-5rem"
                                 zIndex="1000"
-                                player={fplPlayers[371]}
+                                player={fplPlayers[373]}
                             />
                             <Card
                                 margin="-5rem"
