@@ -5,18 +5,13 @@ import { Card } from './Card';
 describe('Card component renders', () => {
     beforeEach(() => {
         let player = {
-            code: 153256,
-            element_type: 3,
-            first_name: 'Mohamed Naser',
-            id: 12,
-            points_per_game: '1.6',
-            second_name: 'El Sayed Elneny',
-            team_code: 3,
-            total_points: 11,
-            value_season: '2.5',
-            web_name: 'Elneny',
-            minutes: 171,
-            ict_index_rank_type: 173,
+            first_name: 'John',
+            id: 1,
+            second_name: 'Smith',
+            value_season: '1',
+            web_name: 'Smith',
+            minutes: 1,
+            ict_index_rank_type: 1,
         };
         render(<Card player={player} />);
     });
@@ -24,7 +19,7 @@ describe('Card component renders', () => {
     it('a player img', () => {
         expect(
             screen.getByRole('img', {
-                name: "Mohamed Naser El Sayed Elneny's image",
+                name: "John Smith's image",
             })
         ).toBeInTheDocument();
     });

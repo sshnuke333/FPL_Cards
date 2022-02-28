@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Background } from './Background';
@@ -8,6 +8,24 @@ const svgBackground = encodeURIComponent(
         <Background gradientStart={'#3d003f'} gradientEnd={'#3f003f'} />
     )
 );
+
+const rotate = keyframes`
+0%{
+    transform: rotateY(180deg);
+}
+20%{
+    transform: rotateY(0deg);
+}
+80%{
+    transform: rotateY(0deg);
+}
+100%{
+    transform: rotateY(180deg);
+}`;
+
+const animate = css`
+    animation: ${rotate} 1700ms ease-in;
+`;
 
 export const CardContent = styled.div.attrs((props) => ({
     margin: props.margin || '0.5rem',
@@ -21,8 +39,12 @@ export const CardContent = styled.div.attrs((props) => ({
     box-shadow: 4px 4px 12px 2px rgba(0, 0, 0, 0.6);
     margin: 1rem 0.5rem;
     margin-left: ${(props) => props.margin};
+    backface-visibility: hidden;
+    transform: ${(props) => (props.flip ? 'rotateY(180deg)' : 'none')};
+    transform-style: preserve-3d;
     z-index: ${(props) => props.zIndex};
-    @media only screen and (max-width: 768px) {
+    ${(props) => (props.animate ? animate : 'animation: none')}
+    @media only screen and (max-width: 796px) {
         margin: 1rem 0.25rem;
         display: ${(props) => props.display};
     }

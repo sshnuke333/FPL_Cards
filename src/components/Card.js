@@ -17,11 +17,19 @@ export const Card = ({
     margin,
     display,
     zIndex,
+    animate,
+    flip,
     handleStatClick = (f) => f, // avoid error if no function is passed
     disabled = true,
 }) => {
     return (
-        <CardContent margin={margin} display={display} zIndex={zIndex}>
+        <CardContent
+            margin={margin}
+            display={display}
+            zIndex={zIndex}
+            animate={animate}
+            flip={transform}
+        >
             <ImageContent>
                 <PlayerImg
                     src={`https://resources.premierleague.com/premierleague/photos/players/250x250/p${player.code}.png`}
@@ -41,11 +49,19 @@ export const Card = ({
                 {player.web_name.toUpperCase()}
             </PlayerName>
             <StatContent>
-                <StatButton disabled={disabled} onClick={handleStatClick}>
+                <StatButton
+                    id="Points"
+                    disabled={disabled}
+                    onClick={(e) => handleStatClick(e)}
+                >
                     <StatName>POINTS</StatName>
                     <StatValue>{player.total_points}</StatValue>
                 </StatButton>
-                <StatButton disabled={disabled} onClick={handleStatClick}>
+                <StatButton
+                    id="PP90"
+                    disabled={disabled}
+                    onClick={(e) => handleStatClick(e)}
+                >
                     <StatName>PP90</StatName>
                     <StatValue>
                         {(player.total_points / (player.minutes / 90)).toFixed(
@@ -53,11 +69,19 @@ export const Card = ({
                         )}
                     </StatValue>
                 </StatButton>
-                <StatButton disabled={disabled} onClick={handleStatClick}>
+                <StatButton
+                    id="Value"
+                    disabled={disabled}
+                    onClick={(e) => handleStatClick(e)}
+                >
                     <StatName>VALUE</StatName>
                     <StatValue>{parseFloat(player.value_season)}</StatValue>
                 </StatButton>
-                <StatButton disabled={disabled} onClick={handleStatClick}>
+                <StatButton
+                    id="ICT-rank"
+                    disabled={disabled}
+                    onClick={(e) => handleStatClick(e)}
+                >
                     <StatName>ICT RANK</StatName>
                     <StatValue>{player.ict_index_rank_type}</StatValue>
                 </StatButton>
