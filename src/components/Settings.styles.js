@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-import { PlayIcon, IssueReopenedIcon, GearIcon } from '@primer/octicons-react';
+import {
+    PlayIcon,
+    IssueReopenedIcon,
+    GearIcon,
+    StackIcon,
+} from '@primer/octicons-react';
 
 const svgProps = `pointer-events: none;
 width: 2rem;
@@ -26,14 +31,20 @@ export const ResetSVG = styled(IssueReopenedIcon)`
 `;
 
 export const Div = styled.div`
-    min-width: 15rem;
+    min-width: 16rem;
     height: 10rem;
     text-align: center;
     grid-column: 1/2;
     grid-row: 1/2;
+    @media only screen and (max-width: 996px) {
+        grid-column: 2/3;
+    }
 `;
 
 export const Gear = styled(GearIcon)`
     ${svgProps}
-    fill: white;
+`;
+
+export const Peek = styled(StackIcon)`
+    ${svgProps}
 `;

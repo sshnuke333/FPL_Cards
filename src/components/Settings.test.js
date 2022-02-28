@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Settings } from './Settings';
 
@@ -17,6 +17,11 @@ describe('Settings component renders', () => {
             screen.getByRole('button', { name: /reset/i })
         ).toBeInTheDocument();
     });
+    it('a peek button', () => {
+        expect(
+            screen.getByRole('button', { name: /peek/i })
+        ).toBeInTheDocument();
+    });
     it('a settings button', () => {
         expect(
             screen.getByRole('button', { name: /settings/i })
@@ -25,14 +30,17 @@ describe('Settings component renders', () => {
     describe('settings button', () => {
         it('is not expanded', () => {
             expect(
-                screen.getByRole('button', { expanded: false })
+                screen.getByRole('button', {
+                    name: /settings/i,
+                    expanded: false,
+                })
             ).toBeInTheDocument();
         });
-        it('on clicking displays form', () => {
+        it('on clicking, it displays form', () => {
             userEvent.click(screen.getByRole('button', { name: /settings/i }));
             expect(screen.getByTestId(/slider/i)).toBeVisible();
         });
-        it('on clicking again hides form', () => {
+        it('on clicking again, it hides form', () => {
             userEvent.dblClick(
                 screen.getByRole('button', { name: /settings/i })
             );
