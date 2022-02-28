@@ -9,6 +9,7 @@ export const initialState = {
     currentOpponentCard: {},
     populated: false,
     gameOver: false,
+    playerWon: 0,
 };
 
 // directly mutating state: createSlice has immer
@@ -44,11 +45,15 @@ const cardsSlice = createSlice({
         setGameOver: (state) => {
             state.gameOver = !state.gameOver;
         },
+        setWinner: (state, { payload }) => {
+            state.playerWon = payload;
+        },
         resetGameState: (state) => {
             return {
                 ...initialState,
                 deckSize: state.deckSize,
                 gameOver: state.gameOver,
+                playerWon: state.playerWon,
             };
         },
     },
@@ -63,6 +68,7 @@ export const {
     setPopulated,
     updatePlayerCards,
     updateOpponentCards,
+    setWinner,
     setGameOver,
     resetGameState,
 } = cardsSlice.actions;
@@ -86,7 +92,7 @@ export function cardWin(
         setTimeout((time) => {
             // opponent card is undefined if has only 1 card
             // opponent loses the game
-            if (nextOpponentCard === undefined) dispatch(gameEnd());
+            if (nextOpponentCard === undefined) dispatch(gameEnd(1));
             else {
                 batch(() => {
                     // add current opponent card to player cards pile
@@ -117,7 +123,7 @@ export function cardLoss(
         setTimeout((time) => {
             // player card is undefined if has only 1 card
             // player loses the game
-            if (nextPlayerCard === undefined) dispatch(gameEnd());
+            if (nextPlayerCard === undefined) dispatch(gameEnd(0));
             else {
                 batch(() => {
                     // add current player card to opponent cards pile
@@ -174,9 +180,10 @@ export function cardDraw(
             });
         }, time);
 }
-export function gameEnd() {
+export function gameEnd(winner) {
     return (dispatch) => {
         batch(() => {
+            dispatch(setWinner(winner));
             dispatch(resetGameState());
             dispatch(setGameOver());
         });
