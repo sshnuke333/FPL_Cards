@@ -7,12 +7,12 @@ import {
     Placeholder,
     CardContainer,
 } from './Play.styles';
-import { ScoreCard } from '../../components/ScoreCard';
-import { Card } from '../../components/Card';
-import { Settings } from '../../components/Settings';
+import { ScoreCard } from '../../../components/ScoreCard';
+import { Card } from '../../../components/Card';
+import { Settings } from '../../../components/Settings';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { headerSelector } from '../../store/Header.slice';
+import { headerSelector } from '../../../store/Header.slice';
 import {
     setPlayerCards,
     setOpponentCards,
@@ -26,7 +26,7 @@ import {
     cardWin,
     cardLoss,
     cardDraw,
-} from '../../store/Cards.slice';
+} from '../../../store/Cards.slice';
 
 export const Play = () => {
     let players = [];

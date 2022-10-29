@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
 import { renderToStaticMarkup } from 'react-dom/server';
-import { Background } from '../../components/Background';
+import { Background } from '../../../components/Background';
 const svgBackground = encodeURIComponent(
     renderToStaticMarkup(
         <Background gradientStart={'#3d003f'} gradientEnd={'#3f003f'} />

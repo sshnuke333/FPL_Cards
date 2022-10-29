@@ -7,7 +7,7 @@ import UniSansHeavyCAPSEWOFF from './assets/UniSansHeavyCAPS.woff';
 import UniSansHeavyCAPSETTF from './assets/UniSansHeavyCAPS.ttf';
 
 import { renderToStaticMarkup } from 'react-dom/server';
-import { Background } from './components/Background';
+import { Background } from './web/components/Background';
 const svgBackground = encodeURIComponent(
     renderToStaticMarkup(
         <Background gradientStart={'#37003c'} gradientEnd={'#963cff'} />
