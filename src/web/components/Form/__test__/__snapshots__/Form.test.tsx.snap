@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form component renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe kLvQKC"
+    data-testid="slider"
+    id="settings"
+  >
+    <label
+      for="deck"
+    >
+      choose deck size:
+    </label>
+    <input
+      aria-label="slider"
+      aria-valuemax="22"
+      aria-valuemin="10"
+      aria-valuenow="22"
+      class="sc-gswNZR hNcShn"
+      id="deck"
+      max="22"
+      min="10"
+      name="deck"
+      step="4"
+      type="range"
+    />
+    <output
+      aria-label="status"
+      class="sc-dkrFOg gDZyuj"
+      for="deck"
+      name="result"
+    >
+      22 Cards
+    </output>
+  </div>
+</DocumentFragment>
+`;

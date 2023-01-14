@@ -1,11 +1,13 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { Form } from './Form';
+import Form from '../Form';
 
 describe('Form component', () => {
     beforeEach(() => {
-        render(<Form />);
+        render(<Form updateStatus={() => {}} />);
+    });
+    it('renders correctly', () => {
+        const { asFragment } = render(<Form updateStatus={() => {}} />);
+        expect(asFragment()).toMatchSnapshot();
     });
     it('renders a range input', () => {
         expect(screen.getByLabelText('slider')).toBeInTheDocument();

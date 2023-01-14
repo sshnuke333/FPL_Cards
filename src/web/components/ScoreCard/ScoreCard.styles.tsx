@@ -33,13 +33,15 @@ export const ScoreCardDetails = styled.div`
     }
 `;
 
-export const ScoreCardLabel = styled.div`
+export const ScoreCardLabel = styled.div.withConfig({
+    shouldForwardProp: (prop) => !['column'].includes(prop),
+})<{ column: string }>`
     height: 4rem;
     width: 8rem;
     background-color: #3d003f;
     border: 1px solid black;
     color: white;
-    grid-column: ${(props) => props.column};
+    grid-column: ${({ column }) => column};
     grid-row: 2/3;
     @media only screen and (max-width: 576px) {
         width: 4rem;

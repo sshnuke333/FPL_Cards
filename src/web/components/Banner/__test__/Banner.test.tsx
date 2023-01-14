@@ -1,10 +1,17 @@
-import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Banner } from './Banner';
+import Banner from '../Banner';
 
 describe('Banner', () => {
+    it('renders correctly', () => {
+        const { asFragment } = render(
+            <Router>
+                <Banner />
+            </Router>
+        );
+        expect(asFragment()).toMatchSnapshot();
+    });
     beforeEach(() => {
         render(
             <Router>
@@ -12,7 +19,8 @@ describe('Banner', () => {
             </Router>
         );
     });
-    let alert, closeButton;
+    let alert: HTMLElement;
+    let closeButton: HTMLElement;
     it('renders a alert banner', () => {
         expect(screen.getByLabelText(/alert/i)).toBeInTheDocument();
     });

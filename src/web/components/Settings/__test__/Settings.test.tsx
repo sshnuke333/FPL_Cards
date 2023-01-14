@@ -1,11 +1,28 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Settings } from './Settings';
+import Settings from '../Settings';
 
 describe('Settings component renders', () => {
     beforeEach(() => {
-        render(<Settings />);
+        render(
+            <Settings
+                startActive={false}
+                resetActive={false}
+                peekAllowed={false}
+                updateOutput={() => {}}
+            />
+        );
+    });
+    it('correctly', () => {
+        const { asFragment } = render(
+            <Settings
+                startActive={false}
+                resetActive={false}
+                peekAllowed={false}
+                updateOutput={() => {}}
+            />
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
     it('a start button', () => {
         expect(

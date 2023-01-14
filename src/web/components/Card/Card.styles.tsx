@@ -1,9 +1,8 @@
-import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
-
 import { renderToStaticMarkup } from 'react-dom/server';
-import { Background } from './Background';
-const svgBackground = encodeURIComponent(
+import Background from '../Background/Background';
+
+const svgBackground: string = encodeURIComponent(
     renderToStaticMarkup(
         <Background gradientStart={'#3d003f'} gradientEnd={'#3f003f'} />
     )
@@ -27,10 +26,14 @@ const animate = css`
     animation: ${rotate} 1700ms ease-in;
 `;
 
-export const CardContent = styled.div.attrs((props) => ({
-    margin: props.margin || '0.5rem',
-    display: props.display || 'block',
-}))`
+export const CardContent = styled.div
+    .attrs((props: { margin?: string; display?: string }) => ({
+        margin: props.margin || '0.5rem',
+        display: props.display || 'block',
+    }))
+    .withConfig({
+        shouldForwardProp: (prop) => !['zIndex', 'animate'].includes(prop),
+    })<{ $flip: boolean; zIndex: string; $animate: boolean }>`
     width: 20rem;
     height: 32rem;
     background: linear-gradient(270deg, #01f5ff, #a425ff);
@@ -38,16 +41,16 @@ export const CardContent = styled.div.attrs((props) => ({
     border-radius: 0.5rem;
     box-shadow: 4px 4px 12px 2px rgba(0, 0, 0, 0.6);
     margin: 1rem 0.5rem;
-    margin-left: ${(props) => props.margin};
+    margin-left: ${({ margin }) => margin};
     backface-visibility: hidden;
-    transform: ${(props) => (props.flip ? 'rotateY(180deg)' : 'none')};
+    transform: ${({ $flip }) => ($flip ? 'rotateY(180deg)' : 'none')};
     transform-style: preserve-3d;
-    z-index: ${(props) => props.zIndex};
+    z-index: ${({ zIndex }) => zIndex};
     @media only screen and (max-width: 796px) {
         margin: 1rem 0.25rem;
-        display: ${(props) => props.display};
+        display: ${({ display }) => display};
     }
-    ${(props) => (props.animate ? animate : 'animation: none')}
+    ${({ $animate }) => ($animate ? animate : 'animation: none')}
 `;
 
 export const ImageContent = styled.div`
@@ -75,15 +78,15 @@ export const PlayerImg = styled.img`
     grid-row: 2/7;
 `;
 
-export const PlayerName = styled.div`
+export const PlayerName = styled.div<{ $smallFont: boolean }>`
     width: 18rem;
     height: 3rem;
     margin-left: 2rem;
     background: #3d003f;
     color: white;
     text-align: center;
-    font-size: ${(props) => (props.smallFont ? '1.5rem' : '2rem')};
-    line-height: ${(props) => (props.smallFont ? '2' : '1.5')};
+    font-size: ${({ $smallFont }) => ($smallFont ? '1.5rem' : '2rem')};
+    line-height: ${({ $smallFont }) => ($smallFont ? '2' : '1.5')};
 `;
 export const StatContent = styled.div`
     width: 16rem;
