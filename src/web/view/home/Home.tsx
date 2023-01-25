@@ -13,11 +13,11 @@ const Home = () => {
                 <ShowCase>
                     {Object.keys(fplPlayers).length !== 0 ? (
                         <>
-                            <Card display="none" player={fplPlayers[503]} />
+                            <Card display="none" player={fplPlayers[525]} />
                             <Card
                                 margin="-5rem"
                                 zIndex="1000"
-                                player={fplPlayers[446]}
+                                player={fplPlayers[449]}
                             />
                             <Card
                                 margin="-5rem"
