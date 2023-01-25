@@ -4,7 +4,7 @@ import ScoreCard from '../ScoreCard';
 describe('ScoreCard', () => {
     it('renders successfully', () => {
         const { asFragment } = render(
-            <ScoreCard playerLeft="1" opponentLeft="1" />
+            <ScoreCard playerLeft={1} opponentLeft={1} />
         );
         expect(asFragment()).toMatchSnapshot();
     });

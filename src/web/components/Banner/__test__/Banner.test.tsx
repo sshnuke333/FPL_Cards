@@ -24,20 +24,24 @@ describe('Banner', () => {
     it('renders a alert banner', () => {
         expect(screen.getByLabelText(/alert/i)).toBeInTheDocument();
     });
-    it('renders a link', () => {
-        expect(
-            screen.getByRole('link', { name: /disclaimer/i })
-        ).toBeInTheDocument();
+    it('renders disclaimer link correctly', () => {
+        const disclaimerLink = screen.getByRole('link', {
+            name: /disclaimer/i,
+        });
+        expect(disclaimerLink).toBeInTheDocument();
+        expect(disclaimerLink).toBeVisible();
+        userEvent.click(disclaimerLink);
+        expect(disclaimerLink).not.toBeVisible();
     });
-    it('renders a clickable button inside alert', () => {
+    it('renders a clickable button inside alert correctly', () => {
         alert = screen.getByLabelText(/alert/i);
         closeButton = within(alert).getByRole('button', {
             hidden: false,
         });
+        expect(closeButton).toBeVisible();
         expect(closeButton).toBeInTheDocument();
         expect(closeButton).not.toBeDisabled();
-    });
-    it('banner closes on button click', () => {
+        expect(closeButton).toHaveAttribute('aria-label', 'close');
         userEvent.click(closeButton);
         expect(alert).not.toBeVisible();
     });

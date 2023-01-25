@@ -1,5 +1,6 @@
-import React, { useReducer } from 'react';
-
+import { FormEvent, MouseEvent, useReducer } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { IPlayer } from '../../typings/components';
 import {
     PlayDiv,
     CurrentCards,
@@ -7,12 +8,8 @@ import {
     Placeholder,
     CardContainer,
 } from './Play.styles';
-import { ScoreCard } from '../../../components/ScoreCard';
-import { Card } from '../../../components/Card';
-import { Settings } from '../../../components/Settings';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { headerSelector } from '../../../store/Header.slice';
+import { Card, ScoreCard, Settings } from '../../components';
+import { headerSelector } from '../../store/Header.slice';
 import {
     setPlayerCards,
     setOpponentCards,
@@ -26,20 +23,32 @@ import {
     cardWin,
     cardLoss,
     cardDraw,
-} from '../../../store/Cards.slice';
+} from '../../store/Cards.slice';
 
-export const Play = () => {
-    let players = [];
+interface IState {
+    startDisabled: boolean;
+    resetDisabled: boolean;
+    animate: boolean;
+}
+
+const Play = (): JSX.Element => {
+    let players: IPlayer[] = [];
     // initiate local state management
-    const [startDisabled, setStartDisabled] = useReducer(
-        (startDisabled) => !startDisabled,
-        false
-    );
-    const [resetDisabled, setResetDisabled] = useReducer(
-        (resetDisabled) => !resetDisabled,
-        true
-    );
-    const [animate, setAnimate] = useReducer((animate) => !animate, false);
+    const initialState: IState = {
+        startDisabled: false,
+        resetDisabled: true,
+        animate: false,
+    };
+    const stateReducer = (
+        state: IState,
+        newState: Partial<IState>
+    ): IState => ({
+        ...state,
+        ...newState,
+    });
+    const [state, setState] = useReducer(stateReducer, initialState);
+
+    const { startDisabled, resetDisabled, animate } = state;
 
     // initiate global store management
     const dispatch = useDispatch();
@@ -60,8 +69,8 @@ export const Play = () => {
         const totalPlayers = Object.keys(fplPlayers).length;
         let i = 0;
         while (i < deckSize) {
-            let playerKey = Math.floor(Math.random() * totalPlayers);
-            let randomPlayer = fplPlayers[playerKey];
+            const playerKey = Math.floor(Math.random() * totalPlayers);
+            const randomPlayer = fplPlayers[playerKey];
             if (
                 randomPlayer.total_points >= 5 &&
                 players.every((player) => player.code !== randomPlayer.code)
@@ -73,47 +82,87 @@ export const Play = () => {
     };
     // change state based on deck prepared above
     const startGame = () => {
-        setStartDisabled(); // disable start : function triggers only if start is enabled
+        setState({ startDisabled: !startDisabled }); // disable start : function triggers only if start is enabled
         if (gameOver === true) dispatch(setGameOver());
         buildDeck();
-        players.map((player, index) => {
+        players.forEach((player, index) => {
             if (index === 0) dispatch(setCurrentPlayerCard(player));
             if (index === 1) dispatch(setCurrentOpponentCard(player));
             if (index > 1) {
-                index % 2 === 0
-                    ? dispatch(setPlayerCards(player))
-                    : dispatch(setOpponentCards(player));
+                if (index % 2 === 0) dispatch(setPlayerCards(player));
+                else dispatch(setOpponentCards(player));
             }
         });
         dispatch(setPopulated());
-        if (resetDisabled) setResetDisabled(); // enable reset if disabled
+        if (resetDisabled) setState({ resetDisabled: !resetDisabled }); // enable reset if disabled
     };
     // reset card slice state branch
     const resetGame = () => {
-        setResetDisabled(); // disable reset : function triggers only if reset is enabled
-        if (startDisabled) setStartDisabled(); // enable start if disabled
+        setState({ resetDisabled: !resetDisabled }); // disable reset : function triggers only if reset is enabled
+        if (startDisabled) setState({ startDisabled: !startDisabled }); // enable start if disabled
         dispatch(resetGameState());
     };
     // display user input and change deck size in state using the input
-    const updateDisplay = (e) => {
-        const value = e.target.value;
-        e.target.setAttribute('aria-valuenow', e.target.value);
-        document.querySelector('output').value = `${e.target.value} Cards`;
-        if (value !== deckSize) {
+    const updateDisplay = (e: FormEvent) => {
+        const target = e.target as HTMLInputElement;
+        const output = document.querySelector('output');
+        const { value } = target;
+        target.setAttribute('aria-valuenow', value);
+        if (output) output.value = `${value} Cards`;
+        if (Number(value) !== deckSize) {
             dispatch(resetGameState());
-            dispatch(setDeckSize(parseInt(value)));
+            dispatch(setDeckSize(Number(value)));
         }
-        if (startDisabled) setStartDisabled(); // enable start if disabled to render new deck
+        if (startDisabled) setState({ startDisabled: !startDisabled }); // enable start if disabled to render new deck
     };
 
-    const generateStat = (card) => {
-        return card.total_points / (card.minutes / 90).toFixed(2);
+    const generateStat = (card: IPlayer | Record<string, never>): number =>
+        card.total_points / (card.minutes / 90);
+
+    const updateCards = (player: number, opponent: number): void => {
+        if (player === opponent) {
+            cardDraw(
+                currentPlayerCard,
+                currentOpponentCard,
+                playerCards[0],
+                opponentCards[0],
+                1900,
+                dispatch
+            );
+            return;
+        }
+        player > opponent
+            ? cardWin(
+                  currentPlayerCard,
+                  currentOpponentCard,
+                  playerCards[0],
+                  opponentCards[0],
+                  1900,
+                  dispatch
+              )
+            : cardLoss(
+                  currentPlayerCard,
+                  currentOpponentCard,
+                  playerCards[0],
+                  opponentCards[0],
+                  1900,
+                  dispatch
+              );
+
+        if (playerCards.length === 0 || opponentCards.length === 0) {
+            if (startDisabled) setState({ startDisabled: !startDisabled });
+        }
     };
 
-    const compareStats = (event, playerCard, opponentCard) => {
+    const compareStats = (
+        event: MouseEvent,
+        playerCard: IPlayer | Record<string, never>,
+        opponentCard: IPlayer | Record<string, never>
+    ) => {
+        const target = event.currentTarget as HTMLDivElement;
         // not targeting child span element to get values
         // get player and opponent data from store
-        switch (event.currentTarget.id) {
+        switch (target.id) {
             case 'Points':
                 updateCards(playerCard.total_points, opponentCard.total_points);
                 break;
@@ -138,43 +187,20 @@ export const Play = () => {
                     playerCard.ict_index_rank_type
                 );
                 break;
+            default:
+                break;
         }
     };
 
-    const updateCards = (player, opponent) => {
-        if (player === opponent)
-            dispatch(
-                cardDraw(
-                    currentPlayerCard,
-                    currentOpponentCard,
-                    playerCards[0],
-                    opponentCards[0],
-                    1900
-                )
-            );
-        player > opponent
-            ? dispatch(
-                  cardWin(
-                      currentPlayerCard,
-                      currentOpponentCard,
-                      playerCards[0],
-                      opponentCards[0],
-                      1900
-                  )
-              )
-            : dispatch(
-                  cardLoss(
-                      currentPlayerCard,
-                      currentOpponentCard,
-                      playerCards[0],
-                      opponentCards[0],
-                      1900
-                  )
-              );
-
-        if (playerCards.length === 0 || opponentCards.length === 0) {
-            if (startDisabled) setStartDisabled();
+    const renderPlaceHolder = (): JSX.Element => {
+        if (gameOver === false) {
+            return <Placeholder>Press Start icon to Play</Placeholder>;
         }
+        return playerWon === 1 ? (
+            <Placeholder>You win. Play Again?</Placeholder>
+        ) : (
+            <Placeholder>You lose. Play Again?</Placeholder>
+        );
     };
 
     return (
@@ -189,15 +215,12 @@ export const Play = () => {
             />
             {populated === false ? (
                 <>
-                    <ScoreCard />
+                    <ScoreCard
+                        playerLeft={playerCards.length}
+                        opponentLeft={opponentCards.length}
+                    />
                     <CurrentCards id="current">
-                        {gameOver === false ? (
-                            <Placeholder>Press Start icon to Play</Placeholder>
-                        ) : playerWon === 1 ? (
-                            <Placeholder>You win. Play Again?</Placeholder>
-                        ) : (
-                            <Placeholder>You lose. Play Again?</Placeholder>
-                        )}
+                        {renderPlaceHolder()}
                     </CurrentCards>
                 </>
             ) : (
@@ -211,7 +234,7 @@ export const Play = () => {
                             player={currentPlayerCard}
                             disabled={false}
                             handleStatClick={(e) => {
-                                setAnimate();
+                                setState({ animate: !animate });
                                 compareStats(
                                     e,
                                     currentPlayerCard,
@@ -228,8 +251,8 @@ export const Play = () => {
                             <CardBack
                                 id="card-back"
                                 animate={animate}
-                                onAnimationEnd={(e) => {
-                                    setAnimate();
+                                onAnimationEnd={() => {
+                                    setState({ animate: !animate });
                                 }}
                             />
                             <Card
@@ -253,3 +276,5 @@ export const Play = () => {
         </PlayDiv>
     );
 };
+
+export default Play;

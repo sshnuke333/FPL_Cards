@@ -1,4 +1,5 @@
-import { expandTarget, toggleDisplay } from '@helpers/display';
+import { FormEvent } from 'react';
+import { expandTarget, toggleDisplay } from '../../helpers/display';
 import { Button, PlaySVG, ResetSVG, Gear, Div, Peek } from './Settings.styles';
 import Form from '../Form/Form';
 
@@ -7,7 +8,7 @@ interface ISettings {
     startActive: boolean;
     reset?: () => void;
     resetActive: boolean;
-    updateOutput: () => void;
+    updateOutput: (e: FormEvent) => void;
     peekAllowed: boolean;
 }
 

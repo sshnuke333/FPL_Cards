@@ -6,8 +6,8 @@ import {
 } from './ScoreCard.styles';
 
 interface IScoreCard {
-    playerLeft: string;
-    opponentLeft: string;
+    playerLeft: number;
+    opponentLeft: number;
 }
 const ScoreCard = ({ playerLeft, opponentLeft }: IScoreCard): JSX.Element => (
     <ScoreCardDiv data-testid="scorecard">

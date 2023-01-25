@@ -1,12 +1,8 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import { Play } from './Play';
+import Play from '../Play';
 
-import { rootReducer } from '../../../store/rootReducer';
-
-const store = configureStore({ reducer: rootReducer });
+import { store } from '../../../state';
 
 // limited tests as component depends on external API, cannot mock as you Don't mock what you don't own
 

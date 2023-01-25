@@ -1,6 +1,11 @@
+import { FormEvent } from 'react';
 import { InputControl, Input, Output } from './Form.styles';
 
-const Form = ({ updateStatus }: { updateStatus: () => void }): JSX.Element => (
+const Form = ({
+    updateStatus,
+}: {
+    updateStatus: (e: FormEvent) => void;
+}): JSX.Element => (
     <InputControl data-testid="slider" id="settings">
         <label htmlFor="deck">choose deck size:</label>
         <Input
@@ -14,7 +19,7 @@ const Form = ({ updateStatus }: { updateStatus: () => void }): JSX.Element => (
             min="10"
             max="22"
             step="4"
-            onInput={updateStatus}
+            onInput={(e: FormEvent) => updateStatus(e)}
         ></Input>
         <Output aria-label="status" name="result" htmlFor="deck">
             22 Cards

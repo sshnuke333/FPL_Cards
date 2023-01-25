@@ -1,7 +1,9 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Card from '../Card';
 
 describe('Card component renders', () => {
+    const fn = jest.fn();
     const player = {
         first_name: 'John',
         second_name: 'Smith',
@@ -16,15 +18,18 @@ describe('Card component renders', () => {
             player={player}
             zIndex="1"
             flip={false}
-            handleStatClick={() => {}}
+            handleStatClick={fn}
             animate={false}
+            disabled={false}
         />
     );
     beforeEach(() => {
         render(renderCard);
     });
     it('renders correctly', () => {
-        const { asFragment } = render(renderCard);
+        const { asFragment } = render(
+            <Card player={player} zIndex="1" flip={false} animate={false} />
+        );
         expect(asFragment()).toMatchSnapshot();
     });
 
@@ -43,5 +48,11 @@ describe('Card component renders', () => {
     it('a four stat buttons', () => {
         const buttons = screen.getAllByRole('button');
         expect(buttons).toHaveLength(4);
+        userEvent.click(buttons[0]);
+        expect(fn).toBeCalled();
+        userEvent.click(buttons[1]);
+        userEvent.click(buttons[2]);
+        userEvent.click(buttons[3]);
+        expect(fn).toHaveBeenCalledTimes(4);
     });
 });

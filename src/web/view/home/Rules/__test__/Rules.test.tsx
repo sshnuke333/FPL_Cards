@@ -1,6 +1,6 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Rules } from './Rules';
+import userEvent from '@testing-library/user-event';
+import Rules from '../Rules';
 
 // provide player data for test
 
@@ -33,5 +33,10 @@ describe('Rules', () => {
     // if image is loaded, card is loaded
     it('renders card', () => {
         expect(screen.getByRole('img', { name: /Emile/i })).toBeInTheDocument();
+    });
+    it.skip('renders rules on button click correctly', () => {
+        const buttons = screen.getAllByRole('button');
+        userEvent.click(buttons[0]);
+        expect(screen.getByText('Total FPL Points scored Till now :'));
     });
 });

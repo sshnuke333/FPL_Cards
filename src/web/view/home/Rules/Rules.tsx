@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { FC, MouseEvent, useState } from 'react';
+import RulesList from '../../../constants/rules.constant';
+import { Card } from '../../../components';
 import {
     Div,
     List,
@@ -8,15 +10,17 @@ import {
     Text,
     StyledLink,
 } from './Rules.styles';
-import { Card } from '../../components/Card';
-export const Rules = ({ player }) => {
+import { IPlayer } from '../../../typings/components';
+
+const Rules: FC<{ player: IPlayer | Record<string, never> }> = ({ player }) => {
     const [description, setDescription] = useState(
         'Click on the stat button for info'
     );
     const [rule, setRule] = useState('');
 
-    const displayStat = (e) => {
-        switch (e.target.innerText) {
+    const displayStat = (e: MouseEvent): void => {
+        const targetElement = e.target as HTMLElement;
+        switch (targetElement.innerText) {
             case 'POINTS':
                 setDescription('Total FPL Points scored Till now :');
                 setRule('Higher points wins');
@@ -33,53 +37,39 @@ export const Rules = ({ player }) => {
                 setDescription("FPL's ICT index Rank based on player type :");
                 setRule('Lower rank wins');
                 break;
+            default:
+                break;
         }
     };
+
     return (
         <Div>
             <h3 style={{ fontSize: '5rem' }}>Rules</h3>
             <List>
-                <ListItem>You will assigned 11 cards by default</ListItem>
-                <ListItem>
-                    You can change this using settings in the play area in the
-                    next page
-                </ListItem>
-                <ListItem>
-                    Only your current card will visible in play area
-                </ListItem>
-                <ListItem>you can peek at your cards</ListItem>
-                <ListItem>
-                    Opponent's card will be hidden until you make a choice{' '}
-                </ListItem>
-                <ListItem>rest of the opponent cards will be hidden</ListItem>
-                <ListItem>
-                    you win the game if you get all opponent's cards
-                </ListItem>
-                <ListItem>
-                    your win / lose based on your card stats, check example
-                    below{' '}
-                </ListItem>
+                {RulesList.map((rules: string) => (
+                    <ListItem key={rules}>{rules}</ListItem>
+                ))}
             </List>
             <RulesContainer>
                 <InteractiveRules>
                     <Text color="#dad400">{description}</Text>
                     {rule.length !== 0 ? (
                         <>
-                            <Text align="end">{rule}</Text>
-                            <Text align="end" size="2rem">
+                            <Text $align="end">{rule}</Text>
+                            <Text $align="end" $size="2rem">
                                 *equal value results to draw
                             </Text>
                             <StyledLink to="play">start Playing</StyledLink>
                         </>
                     ) : (
-                        <Text align="end">{rule}</Text>
+                        <Text $align="end">{rule}</Text>
                     )}
                 </InteractiveRules>
                 {player !== undefined ? (
                     <Card
                         player={player}
                         disabled={false}
-                        handleStatClick={(e) => displayStat(e)}
+                        handleStatClick={displayStat}
                     />
                 ) : (
                     <div></div>
@@ -88,3 +78,5 @@ export const Rules = ({ player }) => {
         </Div>
     );
 };
+
+export default Rules;

@@ -1,15 +1,13 @@
-import React, { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
-
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Outlet } from 'react-router-dom';
+import { Banner, Navbar } from '../components';
 import { fetchFPLData } from '../store/Header.slice';
-import { Navbar } from '../components/Navbar';
-import { Banner } from '../components/Banner';
 
-export const Header = () => {
+const Header = (): JSX.Element => {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchFPLData());
+        fetchFPLData(dispatch);
     }, []);
 
     return (
@@ -20,3 +18,5 @@ export const Header = () => {
         </>
     );
 };
+
+export default Header;

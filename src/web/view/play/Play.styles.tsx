@@ -2,7 +2,8 @@ import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
 import { renderToStaticMarkup } from 'react-dom/server';
-import { Background } from '../../../components/Background';
+import { Background } from '../../components';
+
 const svgBackground = encodeURIComponent(
     renderToStaticMarkup(
         <Background gradientStart={'#3d003f'} gradientEnd={'#3f003f'} />
@@ -23,7 +24,7 @@ const rotate = keyframes`
     transform: rotateY(0deg);
 }`;
 
-const animate = css`
+const animation = css`
     animation: ${rotate} 1700ms ease-in;
 `;
 
@@ -60,7 +61,9 @@ export const CurrentCards = styled.div`
     }
 `;
 
-export const CardBack = styled.div`
+export const CardBack = styled.div.withConfig({
+    shouldForwardProp: (prop) => !['animate'].includes(prop),
+})<{ animate: boolean }>`
     position: absolute;
     width: 20rem;
     height: 32rem;
@@ -71,7 +74,7 @@ export const CardBack = styled.div`
     margin: 1rem 0.5rem;
     backface-visibility: hidden;
     transform-style: preserve-3d;
-    ${(props) => (props.animate ? animate : 'animation: none')}
+    ${({ animate }) => (animate ? animation : 'animation: none')}
 `;
 
 export const Placeholder = styled.div`

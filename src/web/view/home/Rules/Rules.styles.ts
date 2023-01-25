@@ -47,13 +47,13 @@ export const InteractiveRules = styled(RulesContainer)`
     }
 `;
 
-export const Text = styled.p`
+export const Text = styled.p<{ $align?: string; $size?: string }>`
     color: ${(props) => (props.color ? props.color : 'white')};
-    text-align: ${(props) => (props.align ? props.align : 'inherit')};
-    font-size: ${(props) => (props.size ? props.size : '4rem')};
+    text-align: ${(props) => (props.$align ? props.$align : 'inherit')};
+    font-size: ${(props) => (props.$size ? props.$size : '4rem')};
     @media only screen and (max-width: 576px) {
         font-size: ${(props) =>
-            props.size ? `${parseFloat(props.size) / 2}rem` : '2rem'};
+            props.$size ? `${parseFloat(props.$size) / 2}rem` : '2rem'};
     }
 `;
 

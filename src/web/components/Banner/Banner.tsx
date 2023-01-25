@@ -1,5 +1,4 @@
-import React from 'react';
-import { expandTarget, hideDisplay } from '@helpers/display';
+import { expandTarget, hideDisplay } from '../../helpers/display';
 import {
     StyledDiv,
     BannerText,

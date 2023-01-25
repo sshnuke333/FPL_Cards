@@ -2,10 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { headerSelector } from '../../store/Header.slice';
 import { Div, ShowCase, StyledP } from './Home.styles';
-import { Rules } from './Rules';
-import { Card } from '../../components/Card';
+import Rules from './Rules/Rules';
+import { Card } from '../../components';
 
-export const Home = () => {
+const Home = () => {
     const { fplPlayers } = useSelector(headerSelector);
     return (
         <>
@@ -13,16 +13,16 @@ export const Home = () => {
                 <ShowCase>
                     {Object.keys(fplPlayers).length !== 0 ? (
                         <>
-                            <Card display="none" player={fplPlayers[32]} />
+                            <Card display="none" player={fplPlayers[503]} />
                             <Card
                                 margin="-5rem"
                                 zIndex="1000"
-                                player={fplPlayers[373]}
+                                player={fplPlayers[446]}
                             />
                             <Card
                                 margin="-5rem"
                                 display="none"
-                                player={fplPlayers[404]}
+                                player={fplPlayers[5]}
                             />
                         </>
                     ) : (
@@ -31,7 +31,9 @@ export const Home = () => {
                 </ShowCase>
                 <StyledP>A fun fpl based card game</StyledP>
             </Div>
-            <Rules player={fplPlayers[18]} />
+            <Rules player={fplPlayers[11]} />
         </>
     );
 };
+
+export default Home;

@@ -1,3 +1,5 @@
+import { MouseEvent } from 'react';
+import { IPlayer } from '../../typings/components.d';
 import {
     CardContent,
     Badge,
@@ -11,35 +13,23 @@ import {
 } from './Card.styles';
 
 interface ICard {
-    player: {
-        code?: number;
-        element_type?: number;
-        first_name: string;
-        second_name: string;
-        web_name: string;
-        now_cost?: number;
-        total_points: number;
-        team_code?: number;
-        value_season: string;
-        minutes: number;
-        ict_index_rank_type: number;
-    };
+    player: IPlayer | Record<string, never>;
     margin?: string;
     display?: string;
-    animate: boolean;
-    zIndex: string;
-    flip: boolean;
-    handleStatClick: () => void;
+    animate?: boolean;
+    zIndex?: string;
+    flip?: boolean;
+    handleStatClick?: (e: MouseEvent) => void;
     disabled?: boolean;
 }
 const Card = ({
     player,
     margin,
     display,
-    zIndex,
-    animate,
-    flip,
-    handleStatClick,
+    zIndex = '1000',
+    animate = false,
+    flip = false,
+    handleStatClick = (): void => {},
     disabled = true,
 }: ICard): JSX.Element => (
     <CardContent
@@ -72,12 +62,16 @@ const Card = ({
             <StatButton
                 id="Points"
                 disabled={disabled}
-                onClick={handleStatClick}
+                onClick={(e: MouseEvent) => handleStatClick(e)}
             >
                 <StatName>POINTS</StatName>
                 <StatValue>{player.total_points}</StatValue>
             </StatButton>
-            <StatButton id="PP90" disabled={disabled} onClick={handleStatClick}>
+            <StatButton
+                id="PP90"
+                disabled={disabled}
+                onClick={(e: MouseEvent) => handleStatClick(e)}
+            >
                 <StatName>PP90</StatName>
                 <StatValue>
                     {(player.total_points / (player.minutes / 90)).toFixed(2)}
@@ -86,7 +80,7 @@ const Card = ({
             <StatButton
                 id="Value"
                 disabled={disabled}
-                onClick={handleStatClick}
+                onClick={(e: MouseEvent) => handleStatClick(e)}
             >
                 <StatName>VALUE</StatName>
                 <StatValue>{parseFloat(player.value_season)}</StatValue>
@@ -94,7 +88,7 @@ const Card = ({
             <StatButton
                 id="ICT-rank"
                 disabled={disabled}
-                onClick={handleStatClick}
+                onClick={(e: MouseEvent) => handleStatClick(e)}
             >
                 <StatName>ICT RANK</StatName>
                 <StatValue>{player.ict_index_rank_type}</StatValue>

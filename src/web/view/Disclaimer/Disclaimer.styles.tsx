@@ -23,6 +23,6 @@ export const Legal = styled.h2`
 `;
 
 export const StyledP = styled.p`
-    color: ${(props) => (props.color ? props.color : 'white')};
+    color: ${({ color }) => color ?? 'white'};
     padding: 0.5rem 0;
 `;
