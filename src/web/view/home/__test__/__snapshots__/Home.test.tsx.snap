@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders successfully 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe gQyfUl"
+  >
+    <div
+      class="sc-gswNZR fXKJtf"
+    >
+      <div />
+    </div>
+    <p
+      class="sc-dkrFOg kalUTa"
+    >
+      A fun fpl based card game
+    </p>
+  </div>
+  <div
+    class="sc-hhOBVt cjRwpi"
+  >
+    <h3
+      style="font-size: 5rem;"
+    >
+      Rules
+    </h3>
+    <ul
+      class="sc-gYbzsP beKSyl"
+    >
+      <li
+        class="sc-cCjUiG NgKqX"
+      >
+        You will assigned 11 cards by default
+      </li>
+      <li
+        class="sc-cCjUiG NgKqX"
+      >
+        You can change this using settings in the play area in the next page
+      </li>
+      <li
+        class="sc-cCjUiG NgKqX"
+      >
+        Only your current card will visible in play area
+      </li>
+      <li
+        class="sc-cCjUiG NgKqX"
+      >
+        You can peek at your cards
+      </li>
+      <li
+        class="sc-cCjUiG NgKqX"
+      >
+        Opponent's card will be hidden until you make a choice
+      </li>
+      <li
+        class="sc-cCjUiG NgKqX"
+      >
+        rest of the opponent cards will be hidden
+      </li>
+      <li
+        class="sc-cCjUiG NgKqX"
+      >
+        you win the game if you get all opponent's cards
+      </li>
+      <li
+        class="sc-cCjUiG NgKqX"
+      >
+        your win / lose based on your card stats, check example below
+      </li>
+    </ul>
+    <div
+      class="sc-cjibBx bBvVpR"
+    >
+      <div
+        class="sc-cjibBx sc-jcMfQk bBvVpR bsSQtr"
+      >
+        <p
+          class="sc-cabOPr bcscRp"
+          color="#dad400"
+        >
+          Click on the stat button for info
+        </p>
+        <p
+          class="sc-cabOPr cBUyqW"
+        />
+      </div>
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;

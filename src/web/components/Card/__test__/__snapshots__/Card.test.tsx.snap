@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component renders renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-gswNZR fDWLOU"
+    display="block"
+    margin="0.5rem"
+  >
+    <div
+      class="sc-dkrFOg CabJx"
+    >
+      <img
+        alt="John Smith's image"
+        class="sc-eDvSVe fGaYPU"
+        src="https://resources.premierleague.com/premierleague/photos/players/250x250/pundefined.png"
+      />
+      <img
+        alt="Club badge"
+        class="sc-hLBbgP zUJUH"
+        src="https://resources.premierleague.com/premierleague/badges/100/tundefined.png"
+      />
+    </div>
+    <div
+      class="sc-jSUZER cNwpiI"
+    >
+      SMITH
+    </div>
+    <div
+      class="sc-gKPRtg FTcVd"
+    >
+      <button
+        class="sc-iBYQkv jnmNMd"
+        disabled=""
+        id="Points"
+      >
+        <span
+          class="sc-ftTHYK ertyuw"
+        >
+          POINTS
+        </span>
+        <span
+          class="sc-ftTHYK sc-pyfCe ertyuw vGiIq"
+        >
+          1
+        </span>
+      </button>
+      <button
+        class="sc-iBYQkv jnmNMd"
+        disabled=""
+        id="PP90"
+      >
+        <span
+          class="sc-ftTHYK ertyuw"
+        >
+          PP90
+        </span>
+        <span
+          class="sc-ftTHYK sc-pyfCe ertyuw vGiIq"
+        >
+          90.00
+        </span>
+      </button>
+      <button
+        class="sc-iBYQkv jnmNMd"
+        disabled=""
+        id="Value"
+      >
+        <span
+          class="sc-ftTHYK ertyuw"
+        >
+          VALUE
+        </span>
+        <span
+          class="sc-ftTHYK sc-pyfCe ertyuw vGiIq"
+        >
+          1
+        </span>
+      </button>
+      <button
+        class="sc-iBYQkv jnmNMd"
+        disabled=""
+        id="ICT-rank"
+      >
+        <span
+          class="sc-ftTHYK ertyuw"
+        >
+          ICT RANK
+        </span>
+        <span
+          class="sc-ftTHYK sc-pyfCe ertyuw vGiIq"
+        >
+          1
+        </span>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

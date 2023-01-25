@@ -1,0 +1,41 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "jsx": "react-jsx",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "lib": ["dom", "esnext"],
+        "strict": true,
+        "sourceMap": true,
+        "target": "esnext",
+        "noImplicitAny": true,
+        "preserveConstEnums": true,
+        "allowJs": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "./dist/",
+        "baseUrl": "./src",
+        "rootDir": "./src",
+        "paths": {
+            "@assets/*": ["<rootDir>/assets/*"],
+            "@components/*": ["<rootDir>/components/*"],
+            "@constants/*": ["<rootDir>/constants/*"],
+            "@helpers/*": ["<rootDir>/helpers/*"],
+            "@store/*": ["<rootDir>/store/*"],
+            "@typings/*": ["<rootDir>/typings/*"]
+        }
+    },
+    "ts-node": { "compilerOptions": { "module": "CommonJS" } },
+    "include": [
+        "./src/web/**/*.ts",
+        "./src/web/**/*.tsx",
+        "./src/server/app.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "tsconfig.json",
+        ".eslintrc.json",
+        "webpack.config.web.json"
+    ]
+}

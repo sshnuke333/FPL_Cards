@@ -5,6 +5,7 @@ logs
 **/*.back.*
 npm-debug.log*
 
+coverage/
 dist/
 node_modules/
 package-lock.json

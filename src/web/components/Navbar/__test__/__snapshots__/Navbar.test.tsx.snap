@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar renders correctly 1`] = `
+<DocumentFragment>
+  <header
+    class="sc-bcXHqe PGcvk"
+  >
+    <nav
+      class="sc-gswNZR ACgTW"
+    >
+      <a
+        aria-label="FPL Cards Home Page on logo link"
+        class="sc-gKPRtg jiKIul"
+        href="/"
+      >
+        <img
+          alt="FPL Cards logo"
+          class="sc-dkrFOg kjAtEz"
+        />
+      </a>
+      <button
+        aria-controls="menu-list"
+        aria-expanded="false"
+        class="sc-hLBbgP iUHvhY"
+        id="menu-button"
+      >
+        Menu
+      </button>
+      <ul
+        class="sc-eDvSVe igyxqk"
+        id="menu-list"
+        role="menu"
+      >
+        <li
+          class="sc-jSUZER dMcPVC"
+        >
+          <a
+            class="sc-gKPRtg jiKIul"
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          class="sc-jSUZER dMcPVC"
+        >
+          <a
+            class="sc-gKPRtg jiKIul"
+            href="/play"
+          >
+            Play
+          </a>
+        </li>
+        <li
+          class="sc-jSUZER dMcPVC"
+        >
+          <a
+            class="sc-gKPRtg jiKIul"
+            href="/disclaimer"
+          >
+            Disclaimer
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</DocumentFragment>
+`;

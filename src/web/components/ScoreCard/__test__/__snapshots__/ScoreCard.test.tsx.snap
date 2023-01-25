@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScoreCard renders successfully 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe ktPVLR"
+    data-testid="scorecard"
+  >
+    <div
+      class="sc-gswNZR kQLhdT"
+    >
+      Cards Left
+    </div>
+    <div
+      class="sc-dkrFOg iSUdvU"
+    >
+      YOU
+    </div>
+    <div
+      class="sc-hLBbgP fgYGba"
+    >
+      <span>
+        1
+      </span>
+      <span>
+        -
+      </span>
+      <span>
+        1
+      </span>
+    </div>
+    <div
+      class="sc-dkrFOg kwTiUo"
+    >
+      COMP
+    </div>
+  </div>
+</DocumentFragment>
+`;
