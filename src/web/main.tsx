@@ -1,14 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { GlobalStyle } from './index.styles';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 
+import { GlobalStyle } from './main.styles';
+import { store } from './state';
 import App from './App';
-import { rootReducer } from './store/rootReducer';
-
-const store = configureStore({ reducer: rootReducer });
 
 render(
     <React.StrictMode>

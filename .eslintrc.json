@@ -1,27 +1,42 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
-    "parser": "babel-eslint",
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "prettier",
-        "airbnb",
-        "prettier/react"
-    ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": "latest",
+        "project": ["./tsconfig.json"],
         "sourceType": "module"
     },
-    "plugins": ["react", "prettier"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "airbnb/base",
+        "airbnb-typescript/base",
+        "prettier"
+    ],
+    "plugins": ["@typescript-eslint", "prettier", "import"],
     "rules": {
         "prettier/prettier": ["error"],
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "react/state-in-constructor": "off"
+        "func-style": ["error", "expression", { "allowArrowFunctions": true }],
+        "import/extensions": [
+            "error",
+            "always",
+            { "pattern": { "jsx": "never", "tsx": "never", "ts": "never" } }
+        ],
+        "no-unused-expressions": ["off"],
+        "@typescript-eslint/no-unused-expressions": ["off"]
+    },
+    "settings": {
+        "import/parsers": { "@typescript-eslint/parser": [".ts", ".tsx"] },
+        "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true
+            }
+        }
+    },
+    "globals": {
+        "JSX": "readonly"
     }
 }
