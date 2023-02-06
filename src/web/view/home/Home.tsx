@@ -1,12 +1,16 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { headerSelector } from '../../store/Header.slice';
 import { Div, ShowCase, StyledP } from './Home.styles';
 import Rules from './Rules/Rules';
-import { Card } from '../../components';
+import { Card, Loader } from '../../components';
 
 const Home = () => {
-    const { fplPlayers } = useSelector(headerSelector);
+    const { fplPlayers, loading } = useSelector(headerSelector);
+
+    if (loading) {
+        return <Loader />;
+    }
+
     return (
         <>
             <Div>

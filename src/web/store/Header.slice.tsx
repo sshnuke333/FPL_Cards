@@ -1,5 +1,4 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios';
 import { IPlayer } from '../typings/components';
 
 const fetchURL = process.env.EXPRESS_URL as string;
@@ -59,8 +58,10 @@ export default headerSlice.reducer;
 export const fetchFPLData = async (dispatch: Dispatch) => {
     dispatch(getFPLPlayers());
     try {
-        const response = await axios.get(fetchURL);
-        dispatch(getFPLPlayersSuccess(response.data));
+        const response = await fetch(fetchURL, { method: 'GET' }).then((res) =>
+            res.json()
+        );
+        dispatch(getFPLPlayersSuccess(response));
     } catch (error) {
         dispatch(getFPLPlayersFailure());
     }
