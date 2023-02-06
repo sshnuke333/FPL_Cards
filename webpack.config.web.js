@@ -56,8 +56,8 @@ module.exports = {
             minRatio: 0.8,
         }),
         new BundleAnalyzerPlugin({
-            analyzerMode: 'server',
-            analyzerPort: '8888',
+            analyzerMode: 'static',
+            openAnalyzer: false,
         }),
     ],
     devServer: {
